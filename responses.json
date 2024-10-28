@@ -1,8 +1,0 @@
-{
-    "basic_python": "Python is a high-level programming language known for its simplicity and readability. It's great for beginners and widely used in web development, data science, AI, and automation.",
-    "installation": "To install Python, visit python.org and download the latest version. For Windows, make sure to check 'Add Python to PATH' during installation. For Mac/Linux, Python might already be installed.",
-    "ide_setup": "Popular Python IDEs include PyCharm (professional), VS Code (lightweight), and Jupyter Notebook (data science). For beginners, I recommend VS Code or PyCharm Community Edition.",
-    "syntax": "I can help you with Python syntax. Could you specify which aspect you'd like to learn about (functions, classes, loops, etc.)?",
-    "error_handling": "I see you're encountering an error. Could you share the exact error message and the code that's causing it? This will help me provide more specific guidance.",
-    "libraries": "Python has many useful libraries. To install a library, use 'pip install library_name' in your terminal. Make sure to activate your virtual environment first if you're using one."
-}

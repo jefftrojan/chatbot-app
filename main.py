@@ -156,14 +156,11 @@ if __name__ == "__main__":
     history = chatbot.train(train_dataset, val_dataset)
     
     # Test some examples
-    test_texts = [
-        "How do I install Python?",
-        "What is Python used for?",
-        "How do I fix this error in my code?",
-        "Which IDE should I use?",
-    ]
+    # test_texts = [
+    #     "crop disease",
+    # ]
     
-    print("\nTesting the chatbot:")
-    for text in test_texts:
-        print("\n" + "="*50)
-        chatbot.evaluate_sample(text)
+    # print("\nTesting the chatbot:")
+    # for text in test_texts:
+    #     print("\n" + "="*50)
+    #     chatbot.evaluate_sample(text)
