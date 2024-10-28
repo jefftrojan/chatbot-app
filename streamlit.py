@@ -101,6 +101,7 @@ st.markdown("""
     <style>
     .stApp {
         background-color: #f5f7f9;
+            color: black;
     }
     .chat-container {
         background-color: white;
