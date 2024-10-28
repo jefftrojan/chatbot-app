@@ -96,7 +96,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS with improved visibility
+# Custom CSS with improved text contrast
 st.markdown("""
     <style>
     .stApp {
@@ -115,28 +115,30 @@ st.markdown("""
         border-radius: 20px;
         padding: 0.5rem 2rem;
         border: none;
+        font-weight: 600;
     }
     .stButton > button:hover {
         background-color: #218838;
     }
     .stTextInput > div > div > input {
         border-radius: 20px;
+        color: #1a1a1a;
     }
     .main-header {
-        background-color: white;
+        background-color: #1a472a;
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
     }
     .main-title {
-        color: #28a745;
+        color: #ffffff;
         font-size: 2.5rem;
         font-weight: bold;
         margin-bottom: 1rem;
     }
     .description-text {
-        color: #666;
+        color: #ffffff;
         font-size: 1.1rem;
         line-height: 1.6;
     }
@@ -147,16 +149,61 @@ st.markdown("""
     }
     .feature-list li {
         padding: 0.5rem 0;
-        color: #444;
+        color: #ffffff;
+        font-size: 1.05rem;
     }
     .feature-list li:before {
         content: "🌿";
         margin-right: 0.5rem;
     }
+    .quick-links {
+        background-color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+    .quick-links h3 {
+        color: #1a472a;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .quick-links ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .quick-links li {
+        padding: 0.5rem 0;
+    }
+    .quick-links a {
+        color: #28a745;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .quick-links a:hover {
+        color: #218838;
+        text-decoration: underline;
+    }
+    .stMarkdown {
+        color: #1a1a1a;
+    }
+    .chat-message {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 0.5rem 0;
+    }
+    .chat-timestamp {
+        color: #666666;
+        font-size: 0.8rem;
+    }
+    .footer-text {
+        color: #1a1a1a !important;
+        font-weight: 500;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# Header Section
+# Header Section with dark background
 st.markdown('<div class="main-header">', unsafe_allow_html=True)
 st.markdown('<h1 class="main-title">🌱 Crop Disease Assistant</h1>', unsafe_allow_html=True)
 st.markdown("""
@@ -187,7 +234,6 @@ with col1:
             placeholder="e.g., What are the symptoms of tomato blight?"
         )
 
-    # Create a container for the chat interface
     chat_container = st.container()
 
     with chat_container:
@@ -242,7 +288,8 @@ with col2:
     url = 'https://www.aci-bd.com/assets/images/rnd/2023/uai.jpg'
     st.image(url, caption="Fall Armyworm Disease", use_column_width=True)
     
-    # Quick Links Section
+    # Quick Links Section with improved contrast
+    st.markdown('<div class="quick-links">', unsafe_allow_html=True)
     st.markdown("### Quick Links")
     st.markdown("""
     - [Common Crop Diseases Guide](#)
@@ -250,13 +297,14 @@ with col2:
     - [Treatment Methods](#)
     - [Emergency Contacts](#)
     """)
+    st.markdown('</div>', unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
-# Footer
+# Footer with improved contrast
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center; color: #666;'>
-    <p>Developed with ❤️ for farmers and agricultural professionals</p>
-    <p>For emergencies, please consult with a local agricultural expert.</p>
+<div style='text-align: center;'>
+    <p class="footer-text">Developed with ❤️ for farmers and agricultural professionals</p>
+    <p class="footer-text">For emergencies, please consult with a local agricultural expert.</p>
 </div>
 """, unsafe_allow_html=True)
