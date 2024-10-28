@@ -23,9 +23,9 @@ with open('crops.json') as json_file:
     intents = json.load(json_file)
 
 # Load pre-trained model and supporting files
-words = pickle.load(open('words.pkl', 'rb'))
-classes = pickle.load(open('classes.pkl', 'rb'))
-model = load_model('chatbotmodel.h5')
+words = pickle.load(open('backend/words.pkl', 'rb'))
+classes = pickle.load(open('backend/classes.pkl', 'rb'))
+model = load_model('backend/chatbotmodel.h5')
 
 # Load BERT tokenizer and model
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -139,7 +139,7 @@ with col1:
     """)
 
 with col2:
-    url = 'https://www.greenlife.co.ke/wp-content/uploads/2022/04/Fall-Armyworm-Greenlife-1566x783-1.jpg'
+    url = 'https://www.aci-bd.com/assets/images/rnd/2023/uai.jpg'
     st.image(url, caption="Fall Armyworm Disease", use_column_width=True)
 
 # Initialize session state variables
