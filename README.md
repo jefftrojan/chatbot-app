@@ -1,4 +1,4 @@
-# Crop Diseases Chat-Bot
+# Crop Chat-Bot
 
 This project is a conversational chatbot built to help farmers and agricultural advisors identify and manage crop diseases. Using deep learning and natural language processing, the bot leverages BERT embeddings to understand user queries about crop diseases and provides relevant guidance and information.
 
