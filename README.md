@@ -25,3 +25,9 @@ To train the model on understanding agricultural queries, create or collect a da
 - Embedding Generation: Use BERT embeddings for sentence-level understanding.
 - Fine-tuning the Model: Fine-tune a pre-trained Transformer model (GPT-2 or similar) on the dataset for better conversational response.
 - Hyperparameter Tuning: Experiment with learning rates, batch size, and other hyperparameters to optimize performance.
+
+
+
+## Deployment
+
+- https://cropbot.streamlit.app/
