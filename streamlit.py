@@ -96,7 +96,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS with improved text contrast
+# Custom CSS
 st.markdown("""
     <style>
     .stApp {
@@ -107,7 +107,6 @@ st.markdown("""
         border-radius: 10px;
         padding: 20px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin-top: 2rem;
     }
     .stButton > button {
         background-color: #28a745;
@@ -115,196 +114,114 @@ st.markdown("""
         border-radius: 20px;
         padding: 0.5rem 2rem;
         border: none;
-        font-weight: 600;
     }
     .stButton > button:hover {
         background-color: #218838;
     }
     .stTextInput > div > div > input {
         border-radius: 20px;
-        color: #1a1a1a;
-    }
-    .main-header {
-        background-color: #1a472a;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-    }
-    .main-title {
-        color: #ffffff;
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
-    .description-text {
-        color: #ffffff;
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
-    .feature-list {
-        list-style-type: none;
-        padding-left: 0;
-        margin-top: 1rem;
-    }
-    .feature-list li {
-        padding: 0.5rem 0;
-        color: #ffffff;
-        font-size: 1.05rem;
-    }
-    .feature-list li:before {
-        content: "🌿";
-        margin-right: 0.5rem;
-    }
-    .quick-links {
-        background-color: #ffffff;
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin-top: 1rem;
-    }
-    .quick-links h3 {
-        color: #1a472a;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-    .quick-links ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-    .quick-links li {
-        padding: 0.5rem 0;
-    }
-    .quick-links a {
-        color: #28a745;
-        text-decoration: none;
-        font-weight: 500;
-    }
-    .quick-links a:hover {
-        color: #218838;
-        text-decoration: underline;
-    }
-    .stMarkdown {
-        color: #1a1a1a;
-    }
-    .chat-message {
-        background-color: #f8f9fa;
-        padding: 1rem;
-        border-radius: 8px;
-        margin: 0.5rem 0;
-    }
-    .chat-timestamp {
-        color: #666666;
-        font-size: 0.8rem;
-    }
-    .footer-text {
-        color: #1a1a1a !important;
-        font-weight: 500;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Header Section with dark background
-st.markdown('<div class="main-header">', unsafe_allow_html=True)
-st.markdown('<h1 class="main-title">🌱 Crop Disease Assistant</h1>', unsafe_allow_html=True)
-st.markdown("""
-<div class="description-text">
-    Welcome to the Crop Disease Assistant! I'm here to help you identify and manage various crop diseases.
-    <ul class="feature-list">
-        <li>Disease symptoms and identification</li>
-        <li>Treatment recommendations</li>
-        <li>Prevention strategies</li>
-        <li>Best practices for crop health</li>
-    </ul>
-</div>
-""", unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# Main Content Area
-col1, col2 = st.columns([3, 2])
+# Create two columns for layout
+col1, col2 = st.columns([2, 1])
 
 with col1:
-    # Chat interface
-    st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
-    
-    def get_text():
-        return st.text_input(
-            "Ask your question here:",
-            "",
-            key="input",
-            placeholder="e.g., What are the symptoms of tomato blight?"
-        )
-
-    chat_container = st.container()
-
-    with chat_container:
-        user_input = get_text()
-        col1, col2, col3 = st.columns([1, 1, 4])
-        
-        with col1:
-            send_button = st.button("Send 📤")
-        with col2:
-            clear_button = st.button("Clear Chat 🗑️")
-
-        if clear_button:
-            st.session_state['generated'] = []
-            st.session_state['past'] = []
-            st.session_state['timestamp'] = []
-            st.session_state.ind = -1
-            st.session_state.question = ""
-
-        if send_button and user_input:
-            st.session_state.past.append(user_input)
-            st.session_state['timestamp'].append(datetime.now().strftime("%H:%M"))
-            
-            msg = main_(user_input.lower())
-            index = msg[1]
-            question = msg[2]
-            
-            st.session_state.ind = index
-            st.session_state.question = question
-            st.session_state.generated.append(msg[0])
-
-        # Display chat messages
-        if st.session_state['generated']:
-            for i in range(len(st.session_state['generated']) - 1, -1, -1):
-                message(
-                    st.session_state["generated"][i],
-                    key=str(i),
-                    avatar_style="bottts",
-                    seed=123
-                )
-                message(
-                    st.session_state['past'][i],
-                    is_user=True,
-                    key=str(i) + '_user',
-                    avatar_style="avataaars",
-                    seed=456
-                )
-
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.title("🌱 Crop Disease Assistant",)
+    st.markdown("""
+    Welcome to the Crop Disease Assistant! I'm here to help you identify and manage various crop diseases. 
+    Feel free to ask questions about:
+    - Disease symptoms
+    - Treatment methods
+    - Prevention strategies
+    - Disease identification
+    """)
 
 with col2:
-    st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
     url = 'https://www.aci-bd.com/assets/images/rnd/2023/uai.jpg'
     st.image(url, caption="Fall Armyworm Disease", use_column_width=True)
-    
-    # Quick Links Section with improved contrast
-    st.markdown('<div class="quick-links">', unsafe_allow_html=True)
-    st.markdown("### Quick Links")
-    st.markdown("""
-    - [Common Crop Diseases Guide](#)
-    - [Prevention Tips](#)
-    - [Treatment Methods](#)
-    - [Emergency Contacts](#)
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
 
-# Footer with improved contrast
+# Initialize session state variables
+if 'generated' not in st.session_state:
+    st.session_state['generated'] = []
+if 'past' not in st.session_state:
+    st.session_state['past'] = []
+if 'index' not in st.session_state:
+    st.session_state.index = []
+if 'ind' not in st.session_state:
+    st.session_state.ind = -1
+if 'question' not in st.session_state:
+    st.session_state.question = ""
+if 'timestamp' not in st.session_state:
+    st.session_state['timestamp'] = []
+
+# Chat interface
+st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
+
+def get_text():
+    return st.text_input(
+        "Ask your question here:",
+        "",
+        key="input",
+        placeholder="e.g., What are the symptoms of tomato blight?"
+    )
+
+# Create a container for the chat interface
+chat_container = st.container()
+
+with chat_container:
+    user_input = get_text()
+    col1, col2, col3 = st.columns([1, 1, 4])
+    
+    with col1:
+        send_button = st.button("Send 📤")
+    with col2:
+        clear_button = st.button("Clear Chat 🗑️")
+
+    if clear_button:
+        st.session_state['generated'] = []
+        st.session_state['past'] = []
+        st.session_state['timestamp'] = []
+        st.session_state.ind = -1
+        st.session_state.question = ""
+
+    if send_button and user_input:
+        st.session_state.past.append(user_input)
+        st.session_state['timestamp'].append(datetime.now().strftime("%H:%M"))
+        
+        msg = main_(user_input.lower())
+        index = msg[1]
+        question = msg[2]
+        
+        st.session_state.ind = index
+        st.session_state.question = question
+        st.session_state.generated.append(msg[0])
+
+    # Display chat messages
+    if st.session_state['generated']:
+        for i in range(len(st.session_state['generated']) - 1, -1, -1):
+            message(
+                st.session_state["generated"][i],
+                key=str(i),
+                avatar_style="bottts",
+                seed=123
+            )
+            message(
+                st.session_state['past'][i],
+                is_user=True,
+                key=str(i) + '_user',
+                avatar_style="avataaars",
+                seed=456
+            )
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+# Footer
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center;'>
-    <p class="footer-text">Developed with ❤️ for farmers and agricultural professionals</p>
-    <p class="footer-text">For emergencies, please consult with a local agricultural expert.</p>
+<div style='text-align: center; color: #666;'>
+    <p>Developed with ❤️ for farmers and agricultural professionals</p>
+    <p>For emergencies, please consult with a local agricultural expert.</p>
 </div>
 """, unsafe_allow_html=True)
